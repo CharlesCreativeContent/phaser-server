@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="index.css">
+  <title>CryptoMon</title>
+</head>
+
+<body>
+
+  <div id="input-box" style="display: none">
+    <h3>CryptoMon</h3>
+    <br />
+    <br />
+    <div id="second-window">
+      <button class="login second">Log-In</button>
+      <br />
+      <br />
+      <br />
+      <span>or</span>
+      <br />
+      <br />
+      <button class="signup second">Sign-Up</button>
+    </div>
+
+    <div id="login-form" style="display: none">
+
+      <form action="/login" method="post">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Red@CryptoMon.Com">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="1234Cats!">
+        <button type="submit" class="login second">Login</button>
+        <br />
+      </form>
+
+    </div>
+
+    <div id="signup-form" style="display: none">
+
+      <form action="/signup" method="post">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Red@CryptoMon.Com">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="1234Cats!">
+        <button type="submit">Sign-Up</button>
+        <br />
+      </form>
+
+    </div>
+
+  </div>
+
+  <div id="phaser-example">
+
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script>
+<script src="/index.js"></script>
+
+</html>
