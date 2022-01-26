@@ -26,8 +26,5 @@
     "passport-local": "~1.0.0",
     "passport-twitter": "^0.1.5"
   },  
-  "version": "1.0.0", 
-  "engines": { 
-      "node": "8.9.4" 
-   }
+  "version": "1.0.0"
 }
