@@ -12,6 +12,7 @@ var flash    = require('connect-flash');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
+var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
 var configDB = require('./config/database.js');
@@ -19,19 +20,30 @@ var configDB = require('./config/database.js');
 var db
 
 // configuration ===============================================================
-mongoose.connect(configDB.url,  { useNewUrlParser: true, useUnifiedTopology: true },(err, database) => {
+mongoose.connect(configDB.url, (err, database) => {
   if (err) return console.log(err)
   db = database
   require('./app/routes.js')(app, passport, db);
 }); // connect to our database
+
+//app.listen(port, () => {
+    // MongoClient.connect(configDB.url, { useNewUrlParser: true }, (error, client) => {
+    //     if(error) {
+    //         throw error;
+    //     }
+    //     db = client.db(configDB.dbName);
+    //     console.log("Connected to `" + configDB.dbName + "`!");
+    //     require('./app/routes.js')(app, passport, db);
+    // });
+//});
 
 require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
-app.use(express.json()); // get information from html forms
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json()); // get information from html forms
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'))
 
 app.set('view engine', 'ejs'); // set up ejs for templating

@@ -1,3 +1,6 @@
+var rainbow;
+var i = 0;
+var title;
 class MainScene extends Phaser.Scene {
   constructor() {
     super({ key: "MainScene" });
@@ -47,14 +50,17 @@ class MainScene extends Phaser.Scene {
     };
 
     // add clickMe test
-    this.add
+    title = this.add
       .text(
         this.cameras.main.width / 2,
         this.cameras.main.height / 2,
         "CryptoMon",
-        { fontSize: 52 }
-      )
-      .setOrigin(0.5)
+        {
+      font: "50px Roboto Condensed",
+      fill: "#fff"
+    });
+    title.setStroke("#000000", 8);
+    title.setShadow(2, 2, "#00ff00", 2, true, true).setDepth(3).setOrigin(0.5)
       .setInteractive()
       .on("pointerdown", () => {
         let element = document.getElementById("input-box");
@@ -66,6 +72,17 @@ class MainScene extends Phaser.Scene {
           signUpButton.addEventListener("click", showSignUp);
         }
       });
+  }
+
+  update(){
+
+
+        var color = `hsl(${i},100%,50%)`;
+    title.setShadow(2, 2, color, 2, true, true)
+    i=i+2
+        if (i === 360) {
+          i = 0;
+        }
   }
 }
 

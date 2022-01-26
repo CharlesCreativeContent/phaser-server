@@ -1,5 +1,12 @@
 module.exports = function(app, passport, db) {
-
+let maps= {
+  "Pallet Town": [
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [0,0,1,0,0],
+    [0,0,0,0,0],
+    [0,0,0,0,0]]
+}
 // normal routes ===============================================================
 
     // show the home page (will also have our login links)
@@ -10,6 +17,16 @@ module.exports = function(app, passport, db) {
     function checkForUserData(result, email){
       return result.filter(x=>x.name===email)[0]
     }
+
+
+    app.get('/userMap', isLoggedIn, function(req, res) {
+      db.collection('cryptoData').find({name: req.user.local.email}).toArray((err, result) => {
+        if (err) return console.log(err)
+        let town = result[0]["route"]
+        let map = maps[town]
+        res.status(200).send(map)
+      })
+    })
 
 
     app.get('/userData', isLoggedIn, function(req, res) {
@@ -36,6 +53,7 @@ db.collection('cryptoData').find({name: req.user.local.email}).toArray((err, res
 //if no data found, make new data
   if(! checkForUserData(result, req.user.local.email)){
     db.collection('cryptoData').insert({
+      email: req.user.local.email,
       name: req.user.local.email,
       team: [],
       monsters:[],
