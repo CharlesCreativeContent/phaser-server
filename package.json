@@ -6,6 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bcrypt-nodejs": "latest",
     "body-parser": "^1.18.3",
     "connect-flash": "~0.1.1",
