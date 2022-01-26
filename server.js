@@ -1,6 +1,6 @@
 // server.js
 
-// set up ======================================================================
+// set up =====================================================================
 // get all the tools we need
 var express  = require('express');
 var app      = express();
