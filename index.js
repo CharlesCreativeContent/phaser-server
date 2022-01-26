@@ -64,5 +64,5 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // launch ======================================================================
 app.set("port",port);
-server.listen(port, () => console.log(`server listening on PORT: ${port}`));
+app.listen(port, () => console.log(`server listening on PORT: ${port}`));
 console.log('The magic happens on port ' + port);
